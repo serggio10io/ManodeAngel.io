@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manos de una Maqueta - Tratamiento Capilar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa-claro: #f8c8dc;
+            --rosa-medio: #f5a6c6;
+            --rosa-oscuro: #e895b5;
+            --texto-oscuro: #333333;
+            --texto-claro: #666666;
+            --blanco: #ffffff;
+            --sombra: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            background-color: #fefefe;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 4px 20px var(--sombra);
+            position: fixed;
+            width: 100%;
+            height: 100px;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-img {
+    width: 200px;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 500;
+            font-size: 20px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--rosa-oscuro);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--rosa-oscuro);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--texto-oscuro);
+            cursor: pointer;
+        }
+
+        /* Botones Flotantes de Redes Sociales */
+        .social-floating {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--blanco);
+            box-shadow: 0 4px 12px var(--sombra);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--blanco);
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        .whatsapp {
+            background-color: #25D366;
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        /* Sección Hero */
+        .hero {
+            background: linear-gradient(rgba(248, 200, 220, 0.9), rgba(248, 200, 220, 0.7)), url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 120vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 250px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--texto-oscuro);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--texto-claro);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--rosa-oscuro);
+            color: var(--blanco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: var(--rosa-medio);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(232, 149, 181, 0.2);
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--texto-oscuro);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--rosa-oscuro);
+        }
+
+        /* Servicios */
+        .services {
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--sombra);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--texto-oscuro);
+        }
+
+        /* Testimonios */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--sombra);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--rosa-claro);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--texto-claro);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        /* Contacto */
+        .contact {
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--texto-oscuro);
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--rosa-oscuro);
+            width: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--texto-oscuro);
+            color: var(--blanco);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--rosa-oscuro);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--rosa-claro);
+        }
+
+        .footer-contact p {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--rosa-claro);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .social-floating {
+                right: 10px;
+            }
+            
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--blanco);
+                padding: 5px;
+                transition: left 0.3s;
+                box-shadow: 0 5px 10px var(--sombra);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            } 
+            
+            .logo-img{
+                width: 120px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .social-floating {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                transform: none;
+                margin-top: 30px;
+            }
+            
+            .social-btn {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logo flotante -->
+    <header>
+        <div class="container header-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-container">
+                <!-- Logo - en un caso real aquí iría la imagen del logo -->
+                <div class="logo">
+    <img src="logo.png" alt="Manos de Ángel" class="logo-img">
+</div>
+               <!-- <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#f8c8dc;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#e895b5;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <text x="50%" y="60%" text-anchor="middle" font-family="Playfair Display, serif" font-size="80" fill="url(#gradient)" font-weight="bold">Manos de Ángel</text>
+                        <text x="50%" y="85%" text-anchor="middle" font-family="Poppins, sans-serif" font-size="30" fill="#333" font-weight="300">Tratamiento Capilar</text>
+                    </svg>
+                </div> --> 
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Botones flotantes de redes sociales -->
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformamos tu cabello con cuidado experto</h1>
+                <p>En Manos de Ángel nos especializamos en tratamientos capilares personalizados que devuelven la vida y salud a tu cabello. Utilizamos productos de la más alta calidad y técnicas innovadoras.</p>
+                <a href="https://wa.me/5351933962?text=Hola%2C%20vengo%20del%20cat%C3%A1logo%20y%20quiero%20reservar%20una%20cita" class="btn">Reserva tu cita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Tratamiento de Hidratación Profunda</h3>
+                        <p>Recupera la humedad natural de tu cabello con nuestro tratamiento de hidratación profunda que nutre desde la raíz hasta las puntas.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Reconstrucción Capilar</h3>
+                        <p>Repara el cabello dañado por químicos, calor o factores ambientales con nuestra terapia reconstructiva de última generación.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1386&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Terapia de Keratina</h3>
+                        <p>Elimina el frizz y consigue un cabello liso, manejable y brillante con nuestro tratamiento de keratina natural sin formol.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+            </div>
+            <div class="about-content">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: 20px; text-align: center;">
+                        En <strong>Manos de una Maqueta</strong> creemos que cada cabello es único y merece un cuidado personalizado. Nuestro equipo de especialistas está comprometido con brindar tratamientos que no solo transforman tu cabello, sino que también realzan tu belleza natural.
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 30px; text-align: center;">
+                        Con más de 10 años de experiencia en el sector, hemos desarrollado metodologías propias que combinan lo mejor de la tradición con las innovaciones más recientes en cuidado capilar. Utilizamos productos de origen natural y tecnología de vanguardia para garantizar resultados excepcionales.
+                    </p>
+                    <div style="text-align: center;">
+                        <a href="#contacto" class="btn">Conoce más sobre nosotros</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimonios de Clientes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Después de años de tratamientos agresivos, mi cabello estaba muy dañado. Gracias a Manos de una Maqueta he recuperado la salud de mi cabello. ¡Lo recomiendo totalmente!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="author-img">
+                        <div>
+                            <h4>María González</h4>
+                            <p>Cliente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "El tratamiento de keratina que me hicieron ha cambiado mi vida. Mi cabello era imposible de peinar y ahora está liso y manejable. Las profesionales son excelentes."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente" class="author-img">
+                        <div>
+                            <h4>Ana Martínez</h4>
+                            <p>Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Me encanta el trato personalizado. Analizan tu cabello y te recomiendan exactamente lo que necesitas. Los resultados son visibles desde la primera sesión."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="author-img">
+                        <div>
+                            <h4>Laura Rodríguez</h4>
+                            <p>Cliente desde 2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-phone"></i> +53 5 1933962</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 9:00 - 20:00</p>
+                    <div style="margin-top: 30px;">
+                        <h4>Síguenos en redes sociales</h4>
+                        <div style="display: flex; margin-top: 15px;">
+                            <a href="https://facebook.com" style="color: #3b5998; margin-right: 15px; font-size: 24px;" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://instagram.com" style="color: #E1306C; margin-right: 15px; font-size: 24px;" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/1234567890" style="color: #25D366; font-size: 24px;" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="formContacto">
+                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="tel" placeholder="Teléfono">
+                        <textarea placeholder="Tu mensaje" required></textarea>
+                        <button type="submit" class="btn">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+                            <text x="0" y="40" font-family="Playfair Display, serif" font-size="40" fill="#f8c8dc" font-weight="bold">Manos de Ángel</text>
+                            <text x="0" y="70" font-family="Poppins, sans-serif" font-size="18" fill="#bbb" font-weight="300">Tratamiento Capilar</text>
+                        </svg>
+                    </div>
+                    <p>Especialistas en tratamientos capilares personalizados que devuelven la vida y salud a tu cabello.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +53 5 1933962</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 9:00 - 20:00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Manos de Ángel - Tratamiento Capilar. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mainNav').classList.remove('active');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Formulario de contacto
+        document.getElementById('formContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+
+        // Efecto de cambio de color en header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
